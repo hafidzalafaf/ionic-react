@@ -1,21 +1,5 @@
 /// <reference types="vitest" />
 
-// import legacy from '@vitejs/plugin-legacy'
-// import react from '@vitejs/plugin-react'
-// import { defineConfig } from 'vite'
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [
-//     react(),
-//     legacy()
-//   ],
-//   test: {
-//     globals: true,
-//     environment: 'jsdom',
-//     setupFiles: './src/setupTests.ts',
-//   }
-// })
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -28,6 +12,9 @@ export default defineConfig({
     legacy(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
+      },
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
         name: 'Nama Aplikasi Kamu',

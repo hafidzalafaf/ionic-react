@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { callOutline, ellipse, images, personCircleOutline, phoneLandscape, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -68,18 +68,18 @@ const App: React.FC = () => (
             <Redirect to="/tab1" />
           </Route>
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+        <IonTabBar slot="bottom" className='bg-[#14A0B9]'>
+          <IonTabButton tab="tab1" href="/tab1" className='bg-[#14A0B9]'>
+            <IonIcon aria-hidden="true" icon={images} className='text-white'/>
+            <IonLabel  className='text-white'>Gallery</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+          <IonTabButton tab="tab2" href="/tab2" className='bg-[#14A0B9]'>
+          <IonIcon aria-hidden="true" icon={personCircleOutline}  className='text-white'/>
+            <IonLabel  className='text-white'>Profile</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+          <IonTabButton tab="tab3" href="/tab3" className='bg-[#14A0B9]'>
+            <IonIcon aria-hidden="true" icon={callOutline}  className='text-white' />
+            <IonLabel  className='text-white'>Contact</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

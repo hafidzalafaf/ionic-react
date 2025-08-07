@@ -1,9 +1,12 @@
-import { IonContent, IonHeader, IonPage, useIonViewDidEnter, useIonViewDidLeave, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
+import { IonCol, IonContent, IonFab, IonFabButton, IonGrid, IonHeader, IonIcon, IonImg, IonPage, IonRow, useIonViewDidEnter, useIonViewDidLeave, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
 import { useAppSelector } from '../store';
 import { selectThemeMode } from '../store/features';
+import { camera } from 'ionicons/icons';
+import { usePhotoGallery } from '../hooks';
+
 
 const Tab1: React.FC = () => {
-
+  const { takePhoto, photos } = usePhotoGallery();
   const themeMode = useAppSelector(selectThemeMode);
   console.log('Current theme mode:', themeMode);
   
@@ -24,19 +27,30 @@ const Tab1: React.FC = () => {
     console.log('Tab 1 view will leave');
   });
 
-
   return (
     <IonPage>
-      <IonHeader>
-        <div className="w-full bg-[#14A0B9] px-4 py-4">
-          <h6 className='text-white font-medium text-xl'>Crypto Gadai</h6>
-        </div>
-      </IonHeader>
       <IonContent fullscreen>
-        <div className="flex justify-center h-screen w-full bg-white bg-opacity-90 px-4 py-6">
+        <div className="flex justify-center h-full w-full bg-white bg-opacity-90 px-4 py-6">
           <div className="bg-white p-4 rounded-xl shadow-md w-full ">
-            <p className='text-medium text-base text-[#2D3748]'>Sign Up </p>
-            <p className='text-[#A0AEC0] text-xs mt-2'>Get full access by ioining Crypto Gadai now and enjoy with ease and convenience</p>
+            <div className="flex justify-between gap-4 items-center">
+              <div className="">
+                <p className='font-medium text-xl text-[#2D3748]'>Our Gallery </p>
+                <p className='text-[#A0AEC0] text-xs mt-2'>Explore our curated collection of beautiful moments — captured with heart, crafted with purpose.</p>
+              </div>
+              <div className="">
+                <button className='bg-blue-300 rounded-full size-10 items-center justify-center' onClick={() => takePhoto()}>
+                  <IonIcon className='mt-1' icon={camera}></IonIcon>
+                </button>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2 mt-4">
+              {photos.map((photo, index) => (
+                  <div key={index} className="w-full rounded-xl hover:shadow-lg transition-shadow duration-300 h-40 overflow-hidden">
+                  <img src={photo.webviewPath} alt="Google" className="w-full h-40 object-cover object-center" />
+                </div>
+                ))}
+            </div>
+  
           </div>
         </div>
       </IonContent>
